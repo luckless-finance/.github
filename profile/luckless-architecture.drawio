@@ -1,0 +1,69 @@
+<mxfile host="app.diagrams.net" modified="2021-07-07T01:13:50.864Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36" etag="Q9y0uWWn6g39Y3HF84wS" version="14.8.4" type="github">
+  <diagram id="l7eMdEcdDhiYAZ-wya6S" name="Page-1">
+    <mxGraphModel dx="1536" dy="859" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="n7WGmfT8SWw6gWjd-S3r-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;dashed=1;" parent="1" source="n7WGmfT8SWw6gWjd-S3r-1" target="n7WGmfT8SWw6gWjd-S3r-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n7WGmfT8SWw6gWjd-S3r-11" value="2. Asset + Strategy + date range" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="n7WGmfT8SWw6gWjd-S3r-5" vertex="1" connectable="0">
+          <mxGeometry x="-0.6625" y="3" relative="1" as="geometry">
+            <mxPoint x="76" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UzzItlznHAZa9cB6NI1Q-1" value="4. Compute Allocations" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="n7WGmfT8SWw6gWjd-S3r-1" target="UzzItlznHAZa9cB6NI1Q-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="160" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="n7WGmfT8SWw6gWjd-S3r-1" value="Orchestrator&lt;br&gt;(TBD)" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="280" y="360" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n7WGmfT8SWw6gWjd-S3r-6" value="dds" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;dashed=1;" parent="1" source="n7WGmfT8SWw6gWjd-S3r-2" target="n7WGmfT8SWw6gWjd-S3r-1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n7WGmfT8SWw6gWjd-S3r-10" value="3.2. Asset Score Time Series" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="n7WGmfT8SWw6gWjd-S3r-6" vertex="1" connectable="0">
+          <mxGeometry x="-0.225" y="-3" relative="1" as="geometry">
+            <mxPoint x="-39" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="n7WGmfT8SWw6gWjd-S3r-15" value="3.1.Get Time Series" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;dashed=1;" parent="1" source="n7WGmfT8SWw6gWjd-S3r-3" target="n7WGmfT8SWw6gWjd-S3r-2" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="640" y="520" as="targetPoint" />
+            <mxPoint x="850" y="525" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="n7WGmfT8SWw6gWjd-S3r-2" value="Bot&lt;br&gt;(Rust)" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="710" y="360" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n7WGmfT8SWw6gWjd-S3r-14" value="1. Get Asset List" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;" parent="1" source="n7WGmfT8SWw6gWjd-S3r-3" target="n7WGmfT8SWw6gWjd-S3r-1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n7WGmfT8SWw6gWjd-S3r-3" value="Query&lt;br&gt;(Go)" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="495" y="510" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n7WGmfT8SWw6gWjd-S3r-18" value="0. Load Strategy" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="n7WGmfT8SWw6gWjd-S3r-17" target="n7WGmfT8SWw6gWjd-S3r-1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n7WGmfT8SWw6gWjd-S3r-17" value="Strategy&lt;br&gt;(yaml)" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" parent="1" vertex="1">
+          <mxGeometry x="300" y="170" width="80" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="UzzItlznHAZa9cB6NI1Q-3" value="" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#ff0000;" vertex="1" parent="1">
+          <mxGeometry x="110" y="375" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="UzzItlznHAZa9cB6NI1Q-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="410" y="610" as="sourcePoint" />
+            <mxPoint x="680" y="610" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UzzItlznHAZa9cB6NI1Q-6" value="NOTE: dotted lines indicate protobuf" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="UzzItlznHAZa9cB6NI1Q-5">
+          <mxGeometry x="-0.6625" y="3" relative="1" as="geometry">
+            <mxPoint x="66" as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
