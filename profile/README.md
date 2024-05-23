@@ -11,7 +11,7 @@ Luckless is a simple extensible algorithmic trading framework for individual inv
 Example [Strategy file](https://github.com/luckless-finance/bot/blob/develop/strategy.yaml)
 ## Back-test Runtime
 
-![hire me](luckless-architecture.png)
+![hire me](profile/luckless-architecture.png)
 
 0. Orchestrator loads Strategy file
 1. Orchestrator gets list of all Assets in market from Query service
