@@ -13,7 +13,7 @@ Example [Strategy file](https://github.com/luckless-finance/bot/blob/develop/str
 
 ## Back-test Runtime
 
-![hire me](profile/luckless-architecture.png)
+![hire me](luckless-architecture.png)
 
 ```mermaid
 sequenceDiagram
