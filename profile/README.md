@@ -13,6 +13,8 @@ Declarative yaml-base domain specific language is used to specify a asset scorin
 
 Example [Strategy file](https://github.com/luckless-finance/bot/blob/develop/strategy.yaml)
 
+![strategy_file_dag](DAG.svg)
+
 ## Back-test Runtime
 
 ![hire me](profile/luckless-architecture.png)
