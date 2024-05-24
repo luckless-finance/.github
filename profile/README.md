@@ -9,11 +9,21 @@ Luckless is a simple extensible algorithmic trading platform for individual inve
 
 ## Strategy DSL
   
+Declarative yaml-base domain specific language is used to specify a asset scoring algorithm as a directed acyclic graph where each graph vertex is a calculation whose input(s) and output are graph edges.
+
 Example [Strategy file](https://github.com/luckless-finance/bot/blob/develop/strategy.yaml)
 
 ## Back-test Runtime
 
-![hire me](luckless-architecture.png)
+![hire me](profile/luckless-architecture.png)
+
+0. Orchestrator loads Strategy file
+1. Orchestrator gets list of all Assets in market from Query service
+2. For each Asset, Orchestrator requests Asset Score Time Series from Bot
+3. Bot executes Strategy directed acyclic graph (DAG) for each Asset
+   1. Bot requests Time Series from Query as specified in Strategy
+   2. Bot computes Asset Score Time Series
+4. Orchestrator aggregates Asset Scores over Assets for each day to get allocation Time Series
 
 ```mermaid
 sequenceDiagram
@@ -33,14 +43,6 @@ sequenceDiagram
     O->>B: Record daily trades implied by portfolio weightings
     Note over B: Compute returns
 ```
-
-0. Orchestrator loads Strategy file
-1. Orchestrator gets list of all Assets in market from Query service
-2. For each Asset, Orchestrator requests Asset Score Time Series from Bot
-3. Bot executes Strategy directed acyclic graph (DAG) for each Asset
-   1. Bot requests Time Series from Query as specified in Strategy
-   2. Bot computes Asset Score Time Series
-4. Orchestrator aggregates Asset Scores over Assets for each day to get allocation Time Series
 
 ## Services
 
