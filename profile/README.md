@@ -17,7 +17,7 @@ Example [Strategy file](https://github.com/luckless-finance/bot/blob/develop/str
 
 ## Back-test Runtime
 
-![hire me](profile/luckless-architecture.png)
+![hire me](luckless-architecture.png)
 
 0. Orchestrator loads Strategy file
 1. Orchestrator gets list of all Assets in market from Query service
