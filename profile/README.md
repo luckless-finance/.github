@@ -1,6 +1,6 @@
 # Luckless
 
-Luckless is a simple extensible algorithmic trading platform for individual investors.  It consists of 3 containerized microservices (written in **Go**, **Java**, and **Rust**) which use **grpc**/**Protobuf** for messaging and **Postgres** for persistence.
+Luckless is a simple extensible algorithmic trading platform for individual investors.  It consists of 2 services (written in **Go** and **Rust**): **Query** serves market data over **grpc**/**Protobuf**, and **Bot** scores a strategy and runs back-tests.
 
 ## Features
 
@@ -17,50 +17,45 @@ Example [Strategy file](https://github.com/luckless-finance/bot/blob/develop/str
 
 ## Back-test Runtime
 
-![hire me](luckless-architecture.png)
+The Orchestrator is part of Bot (the `luckless` crate). It loads the Strategy file, scores every Asset, turns the scores into daily portfolio weights and computes the returns itself; there is no separate Broker service. Bot reads market data from mock data (default), CSV files, or the Query service (`--grpc`, experimental).
 
-0. Orchestrator loads Strategy file
-1. Orchestrator gets list of all Assets in market from Query service
-2. For each Asset, Orchestrator requests Asset Score Time Series from Bot
-3. Bot executes Strategy directed acyclic graph (DAG) for each Asset
-   1. Bot requests Time Series from Query as specified in Strategy
+1. Orchestrator loads Strategy file
+2. Orchestrator gets the list of Assets from the data source (the Query service when run with `--grpc`)
+3. For each Asset, Orchestrator runs the Strategy directed acyclic graph (DAG)
+   1. Bot requests Time Series from the data source as specified in Strategy
    2. Bot computes Asset Score Time Series
-4. Orchestrator aggregates Asset Scores over Assets for each day to get allocation Time Series
+4. Orchestrator aggregates Asset Scores over Assets for each day to get allocation Time Series, then computes returns and metrics
 
 ```mermaid
 sequenceDiagram
-    participant O as Orchestrator
     participant Q as Query
-    participant Bot as Bot
-    participant B as Broker
+    box Bot
+        participant O as Orchestrator
+        participant S as Strategy DAG
+    end
     Note over O: Load Strategy file
     O->>+Q: Get market asset list
     Q->>-O: Paginated asset list
-    O->>Bot: Request score timeseries for each asset
-    Bot->>Q: Get data implied by Strategy to compute asset score
-    Q->>Bot: Financial data about asset
-    Note over Bot: Compute asset score timeseries
-    Bot->>O: Asset score timeseries (non-negative scalar)
+    O->>S: Score each asset
+    S->>Q: Get data implied by Strategy to compute asset score
+    Q->>S: Financial data about asset
+    Note over S: Compute asset score timeseries
+    S->>O: Asset score timeseries (non-negative scalar)
     Note over O: Normalize asset scores<br/>to get portfolio weightings
-    O->>B: Record daily trades implied by portfolio weightings
-    Note over B: Compute returns
+    Note over O: Compute returns and metrics
 ```
 
 ## Services
 
 - [*Bot*](https://github.com/luckless-finance/bot) (Rust)
+  - Orchestrator: parses a Strategy yaml, scores each Asset and aggregates Asset Scores to get Asset allocations
   - executes Strategy to determine non-negative Asset Score
-  - consumes market data provided by Query service GRPC/Protobuf
+  - runs back-tests and computes returns and metrics
+  - consumes market data from mock data, CSV files or the Query service (GRPC/Protobuf)
 - [*Query*](https://github.com/luckless-finance/query) (Golang)
   - written in Go
   - implements GRPC-based query.proto service
-  - exposes Quandl market data to other services
-- [*Broker*](https://github.com/luckless-finance/broker) (Java + Quarkus)
-  - provides mock brokerage account API
-- Orchestrator
-  - parses a Strategy yaml and handles any parametrization
-  - sends 1 Asset Score request per Asset to Bot
-  - aggregates Asset Scores to get Asset allocations
+  - serves market data from daily-bar CSV files, or generated mock data
 
 > [shared resources](https://github.com/luckless-finance/shared)  |  [docs](https://github.com/luckless-finance/docs)
 
